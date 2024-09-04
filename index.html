@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Styled Table</title>
+  <link rel="stylesheet" href="./src/output.css" />
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class=" container">
+    <div class="flex  items-start  gap-10 ">
+      <div class="w-full  max-w-[400px] mx-auto bg-white border border-gray-300 rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">
+          User Information Form
+        </h2>
+        <form class="flex flex-col gap-3 w-full  " id="form">
+          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+          <input type="text" id="name" name="name"
+            class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2"
+            placeholder="John Doe" required />
+          <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
+          <input type="number" id="age" name="age"
+            class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2"
+            placeholder="30" required min="1" />
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" id="email" name="email"
+            class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2"
+            placeholder="john@example.com" required />
+          <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+          <input type="text" id="address" name="address"
+            class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2"
+            placeholder="1234 Elm Street" required />
+          <button type="submit" id="form_btn"
+            class="w-full bg-blue-600 text-white font-semibold py-2 px-4 mt-5 block rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300">
+            Submit
+          </button>
+        </form>
+      </div>
+
+      <table class="w-full bg-white border border-gray-300   rounded-lg shadow-md  overflow-y-scroll">
+        <thead class="bg-blue-600 text-white">
+          <tr>
+            <th class="py-3 px-6 text-left font-semibold text-sm">Name</th>
+            <th class="py-3 px-6 text-left font-semibold text-sm">Age</th>
+            <th class="py-3 px-6 text-left font-semibold text-sm">Email</th>
+            <th class="py-3 px-6 text-left font-semibold text-sm">Address</th>
+            <th class="py-3 px-6 text-left font-semibold text-sm">Action</th>
+          </tr>
+        </thead>
+        <tbody id="table_body" class=" max-h-[400px] w-full overflow-y-scroll">
+
+
+        </tbody>
+    </div>
+    </table>
+  </div>
+  </div>
+
+  <script src="./build/js/index.js"></script>
+</body>
+
+</html>
