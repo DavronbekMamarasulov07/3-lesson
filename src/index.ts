@@ -22,11 +22,11 @@ class User {
   email: string;
   address: string;
   constructor(
-    id: number,
-    name: string,
-    age: number,
-    email: string,
-    address: string
+    id: number = 0,
+    name: string = "",
+    age: number = 0,
+    email: string = "",
+    address: string = ""
   ) {
     this.id = id;
     this.name = name;
@@ -52,24 +52,29 @@ class User {
       tBody.appendChild(tr);
     });
 
-    tBody.addEventListener("click", (e) => {
-      const target = e.target as HTMLElement
-      if (target && target.tagName === "BUTTON" && target.dataset.id) {
-        const userId = parseInt(target.dataset.id, 10);
-        this.deleteUser(userId);
-      }
-    })
+    
   }
 
   deleteUser(id: number) {
-  usersArray = usersArray.filter((user) => user.id !== id);
-  localStorage.setItem("users", JSON.stringify(usersArray));
-  this.renderUser();
-  console.log(usersArray);
+    const userDelete = confirm("Are you sure you want to delete this user?");
+    if(userDelete) {
+        usersArray = usersArray.filter((user) => user.id !== id);
+        localStorage.setItem("users", JSON.stringify(usersArray));
+        this.renderUser();
+        console.log(usersArray);
+    }
   }
 }
 
-const newUser = new User(0,'', 0, '', '');
+
+
+tBody.addEventListener("click", (e) => {
+  const target = e.target as HTMLElement;
+  if (target && target.tagName === "BUTTON" && target.dataset.id) {
+    const userId = parseInt(target.dataset.id, 10);
+    new User().deleteUser(userId);
+  }
+});
 
 
 form.addEventListener('submit', (e) => {
@@ -90,4 +95,4 @@ form.addEventListener('submit', (e) => {
     
 })
 
-newUser.renderUser();
+ new User().renderUser();

@@ -12,7 +12,7 @@ class User {
     age;
     email;
     address;
-    constructor(id, name, age, email, address) {
+    constructor(id = 0, name = "", age = 0, email = "", address = "") {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -34,22 +34,24 @@ class User {
           `;
             tBody.appendChild(tr);
         });
-        tBody.addEventListener("click", (e) => {
-            const target = e.target;
-            if (target && target.tagName === "BUTTON" && target.dataset.id) {
-                const userId = parseInt(target.dataset.id, 10);
-                this.deleteUser(userId);
-            }
-        });
     }
     deleteUser(id) {
-        usersArray = usersArray.filter((user) => user.id !== id);
-        localStorage.setItem("users", JSON.stringify(usersArray));
-        this.renderUser();
-        console.log(usersArray);
+        const userDelete = confirm("Are you sure you want to delete this user?");
+        if (userDelete) {
+            usersArray = usersArray.filter((user) => user.id !== id);
+            localStorage.setItem("users", JSON.stringify(usersArray));
+            this.renderUser();
+            console.log(usersArray);
+        }
     }
 }
-const newUser = new User(0, '', 0, '', '');
+tBody.addEventListener("click", (e) => {
+    const target = e.target;
+    if (target && target.tagName === "BUTTON" && target.dataset.id) {
+        const userId = parseInt(target.dataset.id, 10);
+        new User().deleteUser(userId);
+    }
+});
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let id = Math.floor(Math.random() * 100);
@@ -64,4 +66,4 @@ form.addEventListener('submit', (e) => {
     newUser.renderUser();
     form.reset();
 });
-newUser.renderUser();
+new User().renderUser();
